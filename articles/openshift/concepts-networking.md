@@ -95,7 +95,11 @@ Network security groups are created in the node's resource group, which is locke
 With a publicly visible API server, you cannot create network security groups and assign them to the NICs.
 
 ## Domain forwarding
-Azure Red Hat OpenShift uses CoreDNS. Domain forwarding can be configured. You cannot bring your own DNS to your virtual networks. For more information, see the documentation on [using DNS forwarding](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html#nw-dns-forward_dns-operator).
+Azure Red Hat OpenShift uses CoreDNS. Domain forwarding can be configured. For more information, see the documentation on [using DNS forwarding](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html#nw-dns-forward_dns-operator).
+
+## Custom DNS
+
+Azure Red Hat OpenShift supports configuring your own DNS servers on the clusters vnet or nodes. For more information, see the documentation on [using custom DNS](howto-custom-dns.md)
 
 ## What's new in OpenShift 4.5
 
