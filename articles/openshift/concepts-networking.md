@@ -99,7 +99,7 @@ Azure Red Hat OpenShift uses CoreDNS. Domain forwarding can be configured. For m
 
 ## Custom DNS
 
-Azure Red Hat OpenShift supports configuring your own DNS servers on the clusters vnet or nodes. For more information, see the documentation on [using custom DNS](howto-custom-dns.md)
+Azure Red Hat OpenShift supports configuring your own DNS servers on the clusters virtual network. For more information, see the documentation on [using custom DNS](howto-custom-dns.md)
 
 ## What's new in OpenShift 4.5
 
