@@ -16,6 +16,24 @@ This article provides the necessary details that allow you to configure your Azu
 
 This article assumes that you're creating a new cluster or have an existing cluster with latest updates applied. If you need an ARO cluster, for a public cluster see the [ARO quickstart](./tutorial-create-cluster.md), or for a [private cluster](./howto-create-private-cluster-4x.md). These steps are the same for both private and public clusters.
 
+### Confirm Cluster Compatability with Custom DNS
+
+We can confirm your cluster is eligible to support this feature by validating the existence of the `99-master-aro-dns` and `99-worker-aro-dns` `machineconfigs`.
+
+```
+oc get machineconfig
+```
+
+You should have more results, but we are lookin for the aro dns `machineconfig`'s:
+
+```
+NAME                                               GENERATEDBYCONTROLLER                      IGNITIONVERSION   AGE
+...
+99-master-aro-dns                                                                             2.2.0             54d
+99-worker-aro-dns                                                                             2.2.0             54d
+...
+```
+
 ## DNS Overview
 
 As each node in the Azure Red Hat OpenShift cluster powers on and joins the network, DHCP configures the virtual machine with information such as IP address and which DNS server to use.
@@ -32,6 +50,7 @@ Configuring a custom dns server for the cluster is broken down into two steps.
 
 1. Modifying the Virtual Network DNS Servers configuration setting.
 2. Restarting nodes in cluster to take changes.
+
 
 
 ## Example
@@ -208,3 +227,42 @@ search reddog.microsoft.com
 nameserver 192.168.0.1
 ```
 
+## Update Existing Custom DNS to New Custom DNS
+
+The procedure for modifying the custom DNS on a cluster that already has custom DNS in place follows the same [process](#update-process-overview).
+
+### Modify DNS
+
+Follow the procedure outlined [here](#Update-DNS-Configuration-in-Virtual Network) to update the DNS configuration on the virtual network.
+
+### Reboot Nodes
+
+Instead of creating the `machineconfig`, we will instead `delete` the machine configs we created the first time.
+
+#### Reboot Worker Nodes
+
+```
+oc delete machineconfig 25-machineconfig-worker-reboot
+```
+
+The output:
+
+```
+machineconfig.machineconfiguration.openshift.io "25-machineconfig-worker-reboot" deleted
+```
+
+Wait for all of the worker nodes to reboot, see [here for more detail](#reboot-workers).
+
+#### Reboot Master Nodes
+
+```
+oc delete machineconfig 25-machineconfig-master-reboot
+```
+
+The output:
+
+```
+machineconfig.machineconfiguration.openshift.io "25-machineconfig-master-reboot" deleted
+```
+
+Wait for all of the master nodes to reboot and return to a `Ready` state.
