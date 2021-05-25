@@ -49,6 +49,9 @@ Once you are at the DNS configuration screen, select **Custom** from the radial 
 >[!IMPORTANT]
 > If you choose to specify a custom DNS server, you will no longer be able to resolve node names in the virtual network via DNS. Nodes will only be reachable via IP address.
 
+>[!NOTE]
+> If you modify the DNS server it must act as a recursive solver and properly return results for the whole Internet, not only internal domains.
+
 ![Specify Custom DNS Servers](media/concepts-networking/vnet-custom-dns.png)
 
 Select **Save**.
