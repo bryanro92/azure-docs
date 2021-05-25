@@ -50,7 +50,7 @@ Once you are at the DNS configuration screen, select **Custom** from the radial 
 > If you choose to specify a custom DNS server, you will no longer be able to resolve node names in the virtual network via DNS. Nodes will only be reachable via IP address.
 
 >[!NOTE]
-> If you modify the DNS server it must act as a recursive solver and properly return results for the whole Internet, not only internal domains.
+> If you modify the DNS server it must return results for the whole Internet, not only internal domains.
 
 ![Specify Custom DNS Servers](media/concepts-networking/vnet-custom-dns.png)
 
@@ -112,7 +112,7 @@ spec:
           source: data:text/plain;charset=utf-8;base64,cmVzdGFydAo=
         filesystem: root
         mode: 0644
-        path: /etc/mco-master-noop-restart.txt
+        path: /etc/mco-noop-master-restart.txt
 ```
 
 #### Reboot Workers
