@@ -24,7 +24,7 @@ Below is the process flow overview of how the configuration is obtained:
 
 ![DNS](media/concepts-networking/custom-dns-pfd.jpg)
 
-An important trade off of using your own DNS server instead of the default DNS server in the virtual network is that you lose the configuration that DNS server provided. You must know that virtual machine names will no longer resolve through DNS on the network. 
+An important trade off of using your own DNS server instead of the default Azure virtual network DNS server is that you lose the configuration that Azure DNS server provided. **You must know that virtual machine names will no longer resolve through DNS.** 
 
 ### Update Process Overview
 
