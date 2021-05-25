@@ -68,7 +68,11 @@ You should receive a notification that your update was successful.
 These steps require having a valid kubeconfig to your cluster, please see [this tutorial ](https://docs.microsoft.com/en-us/azure/openshift/tutorial-connect-cluster) for details on how to obtain a kubeconfig.
 
 The following code snippets create noop `machineconfig`'s for master and worker nodes. This allows you to initiate rolling reboots for either the worker or master nodes. For more information about the Machine Config Operator (MCO), please see either [the source code](https://github.com/openshift/machine-config-operator) or the [OpenShift docs for MCO
-](https://docs.openshift.com/container-platform/4.6/architecture/control-plane.html).
+](https://docs.openshift.com/container-platform/4.6/post_installation_configuration/machine-configuration-tasks.html#understanding-the-machine-config-operator).
+
+>[!NOTE]
+> The MCO reboots nodes one at a time and adheres to [pod disruption budgets.](https://docs.openshift.com/container-platform/4.6/post_installation_configuration/cluster-tasks.html#post-install-pod-disruption-budgets)
+
 #### MachineConfig definitions
 
 Worker restarts:
